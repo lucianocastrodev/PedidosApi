@@ -18,8 +18,12 @@ builder.Services.AddCors(options =>
 });
 
 // 🔹 Configura o DbContext para SQLite
+/*builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=pedidos.db"));*/
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=pedidos.db"));
+    options.UseInMemoryDatabase("PedidosDb"));
+
 
 // 🔹 Adiciona SignalR
 builder.Services.AddSignalR();
@@ -30,8 +34,14 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+
+    // Só chama Migrate se estiver usando um provedor relacional
+    if (db.Database.IsRelational())
+    {
+        db.Database.Migrate();
+    }
 }
+
 
 // 🔹 Usa CORS
 app.UseCors("AllowAll");
