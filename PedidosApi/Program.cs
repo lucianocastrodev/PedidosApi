@@ -24,16 +24,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // 🔹 Adiciona SignalR
 builder.Services.AddSignalR();
 
-// 🔹 Configura Kestrel para aceitar conexões de qualquer IP na rede
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(5220); // escuta todas as interfaces na porta 5220
-});
 
 var app = builder.Build();
 
-app.Urls.Add("http://localhost:5220");
-app.Urls.Add("http://192.168.1.115:5220"); // substitua pelo IP do seu PC
 
 // 🔹 Usa CORS
 app.UseCors("AllowAll");
