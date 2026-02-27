@@ -35,6 +35,7 @@ public class PedidosController : ControllerBase
         return CreatedAtAction(nameof(GetTodos), new { pedido.Id }, pedido);
     }
 
+    // Atualiza apenas os campos editáveis
     [HttpPut("pedidos/{id}")]
     public async Task<IActionResult> Put(int id, Pedido pedido)
     {
