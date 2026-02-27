@@ -38,7 +38,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Render usa a porta 8080 por padrão
-#ENV ASPNETCORE_URLS=http://+:8080
-ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
+ENV ASPNETCORE_URLS=http://+:8080
+#ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
 
 ENTRYPOINT ["dotnet", "PedidosApi.dll"]
