@@ -9,4 +9,6 @@ public class Pedido
     public decimal Valor { get; set; }
     public string Status { get; set; } = "Novo";
     public DateTime CriadoEm { get; set; } = DateTime.Now;
+
+    public string { get; set; } = "Tudo certo!";
 }
