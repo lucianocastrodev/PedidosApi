@@ -10,5 +10,5 @@ public class Pedido
     public string Status { get; set; } = "Novo";
     public DateTime CriadoEm { get; set; } = DateTime.Now;
 
-    public string { get; set; } = "Tudo certo!";
+    public string result { get; set; } = "Tudo certo!";
 }
